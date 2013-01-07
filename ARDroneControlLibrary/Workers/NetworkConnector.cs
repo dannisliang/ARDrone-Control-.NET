@@ -20,6 +20,8 @@ using ARDrone.Control.Network;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Threading;
+using WinForms = System.Windows.Forms;
+
 
 using ARDrone.Control.Utils;
 
@@ -56,7 +58,7 @@ namespace ARDrone.Control.Workers
 
         private Timer waitForConnectionTimer;
 
-        private String droneNetworkIdentifierStart;
+        public String droneNetworkIdentifierStart;
         private String standardOwnIpAddress;
         private String droneIpAddress;
 
@@ -299,7 +301,7 @@ namespace ARDrone.Control.Workers
             foreach (NativeWifi.Wlan.WlanAvailableNetwork network in networks)
             {
                 String ssid = ByteArrayToString(network.dot11Ssid.SSID);
-
+                WinForms.MessageBox.Show("Checking: " + ssid + " to " + droneNetworkIdentifierStart.ToString());
                 if (ssid.StartsWith(droneNetworkIdentifierStart))
                     return network;
             }
