@@ -58,6 +58,8 @@ namespace ARDrone.Control
         private float lastGazValue = 0.0f;
         private float lastYawValue = 0.0f;
 
+        public Int16 droneVersion = 1;
+
         public bool lastConnectionState;
 
         private DroneCameraMode currentCameraMode = DroneCameraMode.FrontCamera;
