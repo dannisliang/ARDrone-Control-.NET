@@ -113,15 +113,8 @@ namespace ARDrone.Control
             {
                 this.setDroneVersion(1);
             }
-            MessageBox.Show("DRONE:"+this.droneVersion.ToString());
-            //if (this.droneVersion == 1)
-            //{
-                networkConnector = new NetworkConnector(droneConfig.DroneNetworkIdentifierStart, droneConfig.StandardOwnIpAddress, droneConfig.DroneIpAddress);
-            //}
-            //else
-            //{
-                //networkConnector = new NetworkConnector("ardrone2_", droneConfig.StandardOwnIpAddress, droneConfig.DroneIpAddress);
-            //}
+
+            networkConnector = new NetworkConnector(droneConfig.DroneNetworkIdentifierStart, droneConfig.StandardOwnIpAddress, droneConfig.DroneIpAddress);
             networkConnector.ConnectionStateChanged += networkConnector_ConnectionStateChanged;
             networkConnector.Error += networkWorker_Error;
 

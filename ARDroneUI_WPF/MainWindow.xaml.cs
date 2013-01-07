@@ -31,6 +31,10 @@ using ARDrone.Input.Utils;
 using ARDrone.Control.Commands;
 using ARDrone.Control.Data;
 using ARDrone.Control.Events;
+using System.Diagnostics;
+using System.Configuration;
+
+
 
 namespace ARDrone.UI
 {
@@ -55,8 +59,8 @@ namespace ARDrone.UI
 
         private DroneControl droneControl;
 
-        private DroneConfig currentDroneConfig; 
-        private HudConfig currentHudConfig; 
+        private DroneConfig currentDroneConfig;
+        private HudConfig currentHudConfig;
 
 
         int frameCountSinceLastCapture = 0;
@@ -79,6 +83,10 @@ namespace ARDrone.UI
             {
                 this.Close();
             }
+
+
+
+            MessageBox.Show("TEST");
         }
 
         public void Dispose()
@@ -261,8 +269,11 @@ namespace ARDrone.UI
         {
             Command emergencyCommand = new FlightModeCommand(DroneFlightMode.Emergency);
 
-            if (!droneControl.IsCommandPossible(emergencyCommand))
-                return;
+            if (droneControl.droneVersion == 1)
+            {
+                if (!droneControl.IsCommandPossible(emergencyCommand)) //Because the Emergency function only turns off on the AR2.0 - don't know about the AR 1, but i want to be able to un-set the emergency :)
+                    return;
+            }
 
             droneControl.SendCommand(emergencyCommand);
             UpdateUIAsync("Sending emergency signal");
@@ -349,9 +360,9 @@ namespace ARDrone.UI
             if (!droneControl.IsConnected && !droneControl.IsConnecting) { buttonGeneralSettings.IsEnabled = true; } else { buttonGeneralSettings.IsEnabled = false; }
             if (!droneControl.IsConnected && !droneControl.IsConnecting) { buttonInputSettings.IsEnabled = true; } else { buttonInputSettings.IsEnabled = false; }
 
-            if      (videoRecorder.IsCompressionRunning)  { labelVideoStatus.Content = "Compressing"; }
+            if (videoRecorder.IsCompressionRunning) { labelVideoStatus.Content = "Compressing"; }
             else if (videoRecorder.IsVideoCaptureRunning) { labelVideoStatus.Content = "Recording"; }
-            else    { labelVideoStatus.Content = "Idling ..."; }
+            else { labelVideoStatus.Content = "Idling ..."; }
         }
 
         private void UpdateStatus()
@@ -601,7 +612,7 @@ namespace ARDrone.UI
                 }
             }
         }
-       
+
         private void TakeSnapshot()
         {
             if (snapshotFilePath == string.Empty)
@@ -612,7 +623,7 @@ namespace ARDrone.UI
 
             System.Drawing.Bitmap currentImage = (System.Drawing.Bitmap)droneControl.BitmapImage.Clone();
             snapshotRecorder.SaveSnapshot(currentImage, snapshotFilePath.Replace(".png", "_" + snapshotFileCount.ToString() + ".png"));
-            UpdateUISync("Saved image #" +snapshotFileCount.ToString());
+            UpdateUISync("Saved image #" + snapshotFileCount.ToString());
             snapshotFileCount++;
         }
 
@@ -657,7 +668,7 @@ namespace ARDrone.UI
             fileDialog.Filter = filter;
 
             bool? result = fileDialog.ShowDialog();
-            
+
             String fileName = null;
             if (result == true)
             {
@@ -946,6 +957,16 @@ namespace ARDrone.UI
         private void timerVideoUpdate_Tick(object sender, EventArgs e)
         {
             SetNewVideoImage();
+        }
+
+        private void imageVideo_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("C:\ffmpeg\ffplay.exe tcp://" + droneControl.droneConfig.StandardOwnIpAddress + ":" + droneControl.droneConfig.VideoPort);
         }
     }
 }

@@ -301,7 +301,7 @@ namespace ARDrone.Control.Workers
             foreach (NativeWifi.Wlan.WlanAvailableNetwork network in networks)
             {
                 String ssid = ByteArrayToString(network.dot11Ssid.SSID);
-                WinForms.MessageBox.Show("Checking: " + ssid + " to " + droneNetworkIdentifierStart.ToString());
+
                 if (ssid.StartsWith(droneNetworkIdentifierStart))
                     return network;
             }
