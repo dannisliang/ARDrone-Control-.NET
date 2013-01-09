@@ -166,7 +166,7 @@
                 <Button Name="buttonCommandChangeCamera" Content="Change camera" Grid.Row="6" Grid.Column="1" Margin="3" Click="buttonCommandChangeCamera_Click" />
             </Grid>
             <Image Name="imageVideo" Stretch="Fill" Canvas.Left="49" Canvas.Top="33" ImageFailed="imageVideo_ImageFailed" />
-            <Button Content="Open External Videostream" Height="24" Name="button1" Width="161" Click="button1_Click" />
+            <Button Content="Open External Videostream" Height="24" Name="button1" Width="161" Click="button1_Click" Visibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>
