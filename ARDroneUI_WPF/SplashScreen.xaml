@@ -21,8 +21,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-        <Image Grid.Row="0" Name="imageSplash" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/ARDrone.UI;component/Images/SplashScreen.png" />
         <Label Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Name="labelProgress" Content="Starting...">
             <Label.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -31,10 +29,10 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <ComboBox Height="23" HorizontalAlignment="Left" Name="comboBox1" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox1_SelectionChanged" Margin="205,0,0,0" ItemsSource="{Binding}" Text="SELECT" DisplayMemberPath="" IsEnabled="True" Visibility="Hidden">
-            <ComboBoxItem Content="AR Drone" />
-            <ComboBoxItem Content="AR Drone 2.0" />
-        </ComboBox>
-        <Label Content="Drone Type" Height="33" HorizontalAlignment="Left" Margin="12,0,0,0" Name="label1" VerticalAlignment="Top" Width="92" Visibility="Hidden" />
+        <Label Content="Win AR Drone [BETA]" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="label1" VerticalAlignment="Top" Width="238" />
+        <Label Content="Original code by Thomas Endres, Steve Hobley" Height="31" HorizontalAlignment="Left" Margin="12,224,0,0" Name="label2" VerticalAlignment="Top" Width="337" FontStretch="Normal" ClipToBounds="False" />
+        <Label Content="Current version by Rob Quist" Height="28" HorizontalAlignment="Left" Margin="12,269,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="and Julien Vinel" Height="28" HorizontalAlignment="Left" Margin="12,238,0,0" Name="label4" VerticalAlignment="Top" />
+        <Button Content="Visit website" Height="22" HorizontalAlignment="Left" Margin="12,46,0,0" Name="button1" VerticalAlignment="Top" Width="163" Click="button1_Click" />
     </Grid>
 </Window>
