@@ -53,7 +53,7 @@ namespace ARDrone.Control
 
             standardOwnIpAddress = "192.168.1.2";
             droneIpAddress = "192.168.1.1";
-            droneNetworkIdentifierStart = "ardrone_";
+            droneNetworkIdentifierStart = "ardrone2_";
 
             videoPort = 5555;
             navigationPort = 5554;

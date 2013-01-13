@@ -243,6 +243,8 @@ namespace ARDrone.UI
                 return;
 
             droneControl.SendCommand(takeOffCommand);
+
+
             UpdateUIAsync("Taking off");
         }
 

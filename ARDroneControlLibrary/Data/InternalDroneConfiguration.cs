@@ -248,6 +248,8 @@ namespace ARDrone.Control.Data
 
             internal int MaxAltitudeInt { set { maxAltitude = value; } }
             internal int MinAltitudeInt { set { minAltitude = value; } }
+
+            
         }
 
         public class DroneNetworkConfiguration : Configuration

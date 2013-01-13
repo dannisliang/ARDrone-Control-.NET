@@ -36,7 +36,7 @@ namespace ARDrone.Input
 
             if (!CheckIfDeviceExists(currentDevices))
             {
-                newDevices.Add(new SpeechInput());
+                //newDevices.Add(new SpeechInput());
             }
 
             return newDevices;
