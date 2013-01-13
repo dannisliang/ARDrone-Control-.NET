@@ -43,14 +43,14 @@ namespace ARDrone.UI
 
             this.droneControl = droneControl;
             connectionSuccessful = false;
+
+            ConnectToDroneNetwork();
         }
 
         private void ProcessStartUp()
         {
             AddDroneEventHandlers();
             InitializeTimers();
-
-            ConnectToDroneNetwork();
         }
 
         private void Dispose()
@@ -196,6 +196,29 @@ namespace ARDrone.UI
         private void droneControl_Error_Sync(object sender, DroneErrorEventArgs e)
         {
             HandleError(e);
+        }
+
+        //OLD CRAP
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            droneControl.droneConfig.Deinitialize(); //I'm sorry C# programmers...
+
+            if (comboBox1.SelectedIndex == 0) //AR Drone 1
+            {
+                droneControl.droneVersion = 1;
+                //ConnectToDroneNetwork();
+            }
+            else //AR Drone 2
+            {
+                droneControl.droneVersion = 2;
+                droneControl.droneConfig.setDroneVersion(2);
+
+            }
+            MessageBox.Show(droneControl.droneVersion.ToString());
+            MessageBox.Show(droneControl.droneConfig.DroneNetworkIdentifierStart.ToString());
+            
+            droneControl.droneConfig.Initialize();
+            ConnectToDroneNetwork();
         }
     }
 }

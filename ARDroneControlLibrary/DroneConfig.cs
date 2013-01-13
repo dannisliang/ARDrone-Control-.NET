@@ -45,6 +45,18 @@ namespace ARDrone.Control
 
         private bool droneConfigInitialized = false;
 
+        public void setDroneVersion(Int16 version)
+        {
+            if (version == 1)
+            {
+                this.droneNetworkIdentifierStart = "ardrone_";
+            }
+            if (version == 2)
+            {
+                this.droneNetworkIdentifierStart = "ardrone2_";
+            }
+        }
+
         public DroneConfig()
         {
             serializationUtils = new SerializationUtils();
@@ -85,6 +97,11 @@ namespace ARDrone.Control
         public void Initialize()
         {
             droneConfigInitialized = true;
+        }
+
+        public void Deinitialize()
+        {
+            droneConfigInitialized = false;
         }
 
         private void CheckForDroneConfigState()

@@ -138,7 +138,7 @@
             </Grid>
             <DockPanel DockPanel.Dock="Top" LastChildFill="True" Margin="5">
                 <Button Name="buttonConnect" Content="Startup"  Width="75" Height="23" Canvas.Left="113" Canvas.Top="28" DockPanel.Dock="Left" Click="buttonConnect_Click" />
-                <Button Name="buttonShutdown" Content="Shutdown" Width="75" Height="23" Canvas.Left="113" Canvas.Top="57" DockPanel.Dock="Right" Click="buttonShutdown_Click" />
+                <Button Name="buttonShutdown" Content="Shutdown" Width="75" Height="22" Canvas.Left="113" Canvas.Top="57" DockPanel.Dock="Right" Click="buttonShutdown_Click" />
                 <Label Name="labelCamera" Content="No picture" HorizontalAlignment="Center" Foreground="Goldenrod" FontFamily="Microsoft Sans Serif" FontSize="12" />
             </DockPanel>
             <Grid DockPanel.Dock="Bottom" Height="165">
@@ -165,7 +165,8 @@
                 <Button Name="buttonCommandFlatTrim" Content="Flat trim" Grid.Row="4" Grid.Column="1" Margin="3"  Click="buttonCommandFlatTrim_Click" />
                 <Button Name="buttonCommandChangeCamera" Content="Change camera" Grid.Row="6" Grid.Column="1" Margin="3" Click="buttonCommandChangeCamera_Click" />
             </Grid>
-            <Image Name="imageVideo" Stretch="Fill" Canvas.Left="49" Canvas.Top="33" />
+            <Image Name="imageVideo" Stretch="Fill" Canvas.Left="49" Canvas.Top="33" ImageFailed="imageVideo_ImageFailed" />
+            <Button Content="Open External Videostream" Height="24" Name="button1" Width="161" Click="button1_Click" Visibility="Hidden" />
         </DockPanel>
     </Grid>
 </Window>

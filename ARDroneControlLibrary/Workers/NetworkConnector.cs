@@ -20,6 +20,8 @@ using ARDrone.Control.Network;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Threading;
+using WinForms = System.Windows.Forms;
+
 
 using ARDrone.Control.Utils;
 
@@ -58,7 +60,7 @@ namespace ARDrone.Control.Workers
 
         private Timer waitForConnectionTimer;
 
-        private String droneNetworkIdentifierStart;
+        public String droneNetworkIdentifierStart;
         private String standardOwnIpAddress;
         private String droneIpAddress;
 

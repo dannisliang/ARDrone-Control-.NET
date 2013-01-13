@@ -94,6 +94,13 @@
       <Project>{30FB7E9C-2668-4303-BF0D-1618DD30B8E5}</Project>
       <Name>ARDroneBasics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ARDrone_Testing\ARDrone_Testing.csproj">
+      <Project>{EB016BB8-3E68-4DD7-B27E-317B18024FFA}</Project>
+      <Name>ARDrone_Testing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

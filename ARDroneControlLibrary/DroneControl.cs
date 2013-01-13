@@ -18,6 +18,7 @@ using System.Text;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Threading;
+using System.Windows.Forms;
 
 using ARDrone.Control.Data;
 using ARDrone.Control.Events;
@@ -42,7 +43,7 @@ namespace ARDrone.Control
 
         // Config
 
-        private DroneConfig droneConfig;
+        public DroneConfig droneConfig;
 
         // Status variables
 
@@ -57,6 +58,8 @@ namespace ARDrone.Control
         private float lastPitchValue = 0.0f;
         private float lastGazValue = 0.0f;
         private float lastYawValue = 0.0f;
+
+        public Int16 droneVersion = 1;
 
         public bool lastConnectionState;
 
@@ -94,8 +97,23 @@ namespace ARDrone.Control
             internalDroneConfiguration = new InternalDroneConfiguration();
         }
 
+        private void setDroneVersion(Int16 version)
+        {
+            this.droneConfig.setDroneVersion(version);
+            this.droneVersion = version;
+        }
+
         private void CreateDroneWorkers()
         {
+            if (MessageBox.Show("Are you using an Parrot AR Drone 2.0?", "AR Drone 2.0?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.setDroneVersion(2);
+            }
+            else
+            {
+                this.setDroneVersion(1);
+            }
+
             networkConnector = new NetworkConnector(droneConfig.DroneNetworkIdentifierStart, droneConfig.StandardOwnIpAddress, droneConfig.DroneIpAddress);
             networkConnector.ConnectionStateChanged += networkConnector_ConnectionStateChanged;
             networkConnector.Error += networkWorker_Error;
