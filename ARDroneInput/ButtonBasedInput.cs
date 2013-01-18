@@ -151,8 +151,16 @@ namespace ARDrone.Input
             else
             {
                 String[] mappingValues = mappingValue.Split('-');
-                String firstButton = mappingValues[0];
-                String secondButton = mappingValues[1];
+                String firstButton = "";
+                String secondButton = "";
+
+
+                if (mappingValues.Length==2)
+                {
+                    firstButton = mappingValues[0];
+                    secondButton = mappingValues[1];
+                }
+                
 
                 if (buttonsPressed.Contains(firstButton))
                 {

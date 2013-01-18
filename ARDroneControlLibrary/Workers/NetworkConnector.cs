@@ -30,7 +30,7 @@ namespace ARDrone.Control.Workers
     public class NetworkConnector : BackgroundWorker
     {
         private const int connectionTimeout = 10000;
-        private const int pingTimeout = 3000;
+        private const int pingTimeout = 10000;
 
         private const int maxScanRetries = 3;
         private const int maxPingRetries = 3;
