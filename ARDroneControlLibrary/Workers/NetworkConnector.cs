@@ -25,16 +25,14 @@ using WinForms = System.Windows.Forms;
 
 using ARDrone.Control.Utils;
 
-using WinForms = System.Windows.Forms;
-
 namespace ARDrone.Control.Workers
 {
     public class NetworkConnector : BackgroundWorker
     {
-        private const int connectionTimeout = 15000;
-        private const int pingTimeout = 5000;
+        private const int connectionTimeout = 10000;
+        private const int pingTimeout = 10000;
 
-        private const int maxScanRetries = 7;
+        private const int maxScanRetries = 3;
         private const int maxPingRetries = 3;
 
         private const int notificationCodeScanSuccessful = 7;
@@ -303,7 +301,7 @@ namespace ARDrone.Control.Workers
             foreach (NativeWifi.Wlan.WlanAvailableNetwork network in networks)
             {
                 String ssid = ByteArrayToString(network.dot11Ssid.SSID);
-                WinForms.MessageBox.Show("SSID = " + ssid);
+
                 if (ssid.StartsWith(droneNetworkIdentifierStart))
                     return network;
             }

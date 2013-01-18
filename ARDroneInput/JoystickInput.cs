@@ -22,7 +22,7 @@ namespace ARDrone.Input
     {
         enum Axis
         {
-            Axis_X, Axis_Y, Axis_Z, Axis_R, Axis_POV_1
+            Axis_X, Axis_Y, Axis_Z, Axis_R, Axis_POV_1, Axis_Rx, Axis_Ry
         }
 
         enum Button
@@ -83,7 +83,7 @@ namespace ARDrone.Input
             }
             else
             {
-                mapping.SetAxisMappings(Axis.Axis_X, Axis.Axis_Y, "Button_1-Button_3", "Button_2-Button_4");
+                mapping.SetAxisMappings(Axis.Axis_X, Axis.Axis_Y, Axis.Axis_Rx, Axis.Axis_Ry);
                 mapping.SetButtonMappings(Button.Button_6, Button.Button_10, Button.Button_10, Button.Button_8, Button.Button_5, Button.Button_9, Button.Button_11);
             }
 
@@ -149,6 +149,9 @@ namespace ARDrone.Input
                 axisValues[Axis.Axis_Y.ToString()] = GetFloatValue(state.Y);
                 axisValues[Axis.Axis_Z.ToString()] = GetFloatValue(state.Z);
                 axisValues[Axis.Axis_R.ToString()] = GetFloatValue(state.Rz);
+                axisValues[Axis.Axis_Rx.ToString()] = GetFloatValue(state.Rx);
+                axisValues[Axis.Axis_Ry.ToString()] = GetFloatValue(state.Ry);
+
                 axisValues[Axis.Axis_POV_1.ToString()] = CalculatePOVValue(state.GetPointOfView()[0]);
 
                 return axisValues;

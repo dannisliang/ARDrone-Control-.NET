@@ -84,9 +84,6 @@ namespace ARDrone.UI
                 this.Close();
             }
 
-
-
-            MessageBox.Show("TEST");
         }
 
         public void Dispose()

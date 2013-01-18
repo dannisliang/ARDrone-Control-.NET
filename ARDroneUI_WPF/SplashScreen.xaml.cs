@@ -23,6 +23,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using System.Diagnostics;
+using System.ComponentModel;
+
 using ARDrone.Control;
 using ARDrone.Control.Events;
 
@@ -198,27 +201,10 @@ namespace ARDrone.UI
             HandleError(e);
         }
 
-        //OLD CRAP
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
-            droneControl.droneConfig.Deinitialize(); //I'm sorry C# programmers...
-
-            if (comboBox1.SelectedIndex == 0) //AR Drone 1
-            {
-                droneControl.droneVersion = 1;
-                //ConnectToDroneNetwork();
-            }
-            else //AR Drone 2
-            {
-                droneControl.droneVersion = 2;
-                droneControl.droneConfig.setDroneVersion(2);
-
-            }
-            MessageBox.Show(droneControl.droneVersion.ToString());
-            MessageBox.Show(droneControl.droneConfig.DroneNetworkIdentifierStart.ToString());
-            
-            droneControl.droneConfig.Initialize();
-            ConnectToDroneNetwork();
+            Process.Start("http://winardrone.com");
         }
+
     }
 }

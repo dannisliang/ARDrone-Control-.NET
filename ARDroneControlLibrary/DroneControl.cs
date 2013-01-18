@@ -105,7 +105,7 @@ namespace ARDrone.Control
 
         private void CreateDroneWorkers()
         {
-            if (MessageBox.Show("Are you using an Parrot AR Drone 2.0?", "AR Drone 2.0?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Please turn on your AR Drone. Make sure the LED's are green.\n\nMake sure your wireless adapter is turned on.\nYou do not have to be connected to the drone yet.\n\nAre you using an Parrot AR Drone 2.0?", "AR Drone 2.0?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.setDroneVersion(2);
             }

@@ -13,7 +13,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="clr-namespace:AviationInstruments;assembly=AviationInstruments"
-        WindowStyle="SingleBorderWindow" Title="MainWindow" Width="854" Height="620" MinWidth="709" MinHeight="620" BorderThickness="1" BorderBrush="#FF232300" Background="#FFF0F0F0" Closing="Window_Closing" Loaded="Window_Loaded" Icon="/ARDrone.UI;component/Images/Icon.png">
+        WindowStyle="SingleBorderWindow" Title="WinARDrone [BETA]" Width="854" Height="620" MinWidth="709" MinHeight="620" BorderThickness="1" BorderBrush="#FF232300" Background="#FFF0F0F0" Closing="Window_Closing" Loaded="Window_Loaded" Icon="/ARDrone.UI;component/Images/Icon.png">
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid DockPanel.Dock="Right" Width="370" Margin="5">

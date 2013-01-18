@@ -145,6 +145,13 @@ namespace ARDrone.Input.InputConfigs
         {
             this.inputValueType = inputValueType;
             this.axisNames = new List<String>(axisNames);
+            Console.WriteLine("---");
+
+                foreach (string axisNameTmp in this.axisNames) {
+                    Console.WriteLine("Name:" + axisNameTmp);
+                }
+
+            Console.WriteLine("---");
             this.controlsNotRecognized = new List<String>(controlsNotRecognized);
         }
 
