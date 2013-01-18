@@ -69,6 +69,11 @@
     <Compile Include="InputControls\SpeechBasedInputControl.cs" />
     <Compile Include="InputMappings\ButtonBasedInputMapping.cs" />
     <Compile Include="InputMappings\SpeechBasedInputMapping.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Timing\TimeBasedCommand.cs" />
     <Compile Include="Speech\SpeechRecognition.cs" />
     <Compile Include="Utils\Events.cs" />
@@ -90,6 +95,12 @@
       <Project>{30FB7E9C-2668-4303-BF0D-1618DD30B8E5}</Project>
       <Name>ARDroneBasics</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -669,7 +669,7 @@ namespace ARDrone.UI
             }
             else
             {
-                SetControlText(control, "-- Assigning a value --");
+                SetControlText(control, "-- Assign input --");
                 control.Foreground = new SolidColorBrush(Colors.LightGray);
             }
 
