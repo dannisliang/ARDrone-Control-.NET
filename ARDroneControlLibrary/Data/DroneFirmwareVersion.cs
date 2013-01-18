@@ -35,23 +35,31 @@ namespace ARDrone.Control.Data
 
         private int[] GetVersionParts()
         {
-            String[] versionPartStrings = versionString.Split('.');
-            int[] versionParts = new int[versionPartStrings.Length];
-
-            for (int i = 0; i < versionPartStrings.Length; i++)
+            if (versionString != null)
             {
-                String versionPartString = versionPartStrings[i];
-                try
-                {
-                    versionParts[i] = Int32.Parse(versionPartString);
-                }
-                catch (Exception)
-                {
-                    versionParts[i] = -1;
-                }
-            }
+                String[] versionPartStrings = versionString.Split('.');
+                int[] versionParts = new int[versionPartStrings.Length];
 
-            return versionParts;
+                for (int i = 0; i < versionPartStrings.Length; i++)
+                {
+                    String versionPartString = versionPartStrings[i];
+                    try
+                    {
+                        versionParts[i] = Int32.Parse(versionPartString);
+                    }
+                    catch (Exception)
+                    {
+                        versionParts[i] = -1;
+                    }
+                }
+
+                return versionParts;
+            }
+            else
+            {
+                int[] versionParts = new int[1];
+                return versionParts;
+            }
         }
 
         public SupportedFirmwareVersion GetSupportedFirmwareVersion()
