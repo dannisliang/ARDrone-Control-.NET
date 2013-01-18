@@ -145,12 +145,12 @@ namespace ARDrone.Input
             try
             {
                 JoystickState state = device.CurrentJoystickState;
-                axisValues[Axis.Axis_X.ToString()] = GetFloatValue(state.X);
-                axisValues[Axis.Axis_Y.ToString()] = GetFloatValue(state.Y);
-                axisValues[Axis.Axis_Z.ToString()] = GetFloatValue(state.Z);
-                axisValues[Axis.Axis_R.ToString()] = GetFloatValue(state.Rz);
-                axisValues[Axis.Axis_Rx.ToString()] = GetFloatValue(state.Rx);
-                axisValues[Axis.Axis_Ry.ToString()] = GetFloatValue(state.Ry);
+                axisValues[Axis.Axis_X.ToString()] = GetFloatValue(state.X) / 2;
+                axisValues[Axis.Axis_Y.ToString()] = GetFloatValue(state.Y) / 2;
+                axisValues[Axis.Axis_Z.ToString()] = GetFloatValue(state.Z) / 2;
+                axisValues[Axis.Axis_R.ToString()] = GetFloatValue(state.Rz) / 2;
+                axisValues[Axis.Axis_Rx.ToString()] = GetFloatValue(state.Rx) / 2;
+                axisValues[Axis.Axis_Ry.ToString()] = GetFloatValue(state.Ry) / 2;
 
                 axisValues[Axis.Axis_POV_1.ToString()] = CalculatePOVValue(state.GetPointOfView()[0]);
 

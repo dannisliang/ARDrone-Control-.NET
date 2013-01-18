@@ -17,51 +17,48 @@ using ARDrone.Control.Data;
 
 namespace ARDrone.Control.Commands
 {
-    public enum LedAnimation
+    public enum DroneAnimation
     {
-        BLINK_GREEN_RED = 0,
-        BLINK_GREEN,
-        BLINK_RED,
-        BLINK_ORANGE,
-        SNAKE_GREEN_RED,
-        FIRE,
-        STANDARD,
-        RED,
-        GREEN,
-        RED_SNAKE,
-        BLANK,
-        LEFT_GREEN_RIGHT_RED,
-        LEFT_RED_RIGHT_GREEN,
-        BLINK_STANDARD
+        PHI_M30_DEG = 0,
+        PHI_30_DEG,
+        THETA_M30_DEG,
+        THETA_30_DEG,
+        THETA_20DEG_YAW_200DEG,
+        THETA_20DEG_YAW_M200DEG,
+        TURNAROUND,
+        TURNAROUND_GODOWN,
+        YAW_SHAKE,
+        YAW_DANCE,
+        PHI_DANCE,
+        THERA_DANCE,
+        VZ_DANCE,
+        WAVE,
+        PHI_THETA_MIXED,
+        DOUBLE_PHI_THETA_MIXED,
+        FLIP_FRONT,
+        FLIP_BACK,
+        FLIP_LEFT,
+        FLIP_RIGHT,
+        MAYDAY
     }
 
-    public class PlayLedAnimationCommand : Command
+    public class PlayDroneAnimationCommand : Command
     {
-        private LedAnimation ledAnimation;
-        private int frequency;
+        private DroneAnimation droneAnimation;
         private int duration;
 
-        public PlayLedAnimationCommand(LedAnimation ledAnimation, int frequency, int duration)
+        public PlayDroneAnimationCommand(DroneAnimation droneAnimation, int duration)
         {
-            this.ledAnimation = ledAnimation;
-            this.frequency = frequency;
+            this.droneAnimation = droneAnimation;
             this.duration = duration;
         }
 
         public override String CreateCommand(SupportedFirmwareVersion firmwareVersion)
         {
             CheckSequenceNumber();
-            return String.Format("AT*LED={0},{1},{2},{3}\r", sequenceNumber, (int)ledAnimation, NormalizeValue(frequency), duration);
+            return String.Format("AT*CONFIG={0},\"control:flight_anim\",\"{1},{2}\"\r", sequenceNumber, (int)droneAnimation, duration);
+            //return String.Format("AT*ANIM={0},{1},{2}\r", sequenceNumber, (int)droneAnimation, duration);
         }
 
-        private int NormalizeValue(float value)
-        {
-            int newValue = 0;
-            unsafe
-            {
-                newValue = *(int*)(&value);
-            }
-            return newValue;
-        }
     }
 }

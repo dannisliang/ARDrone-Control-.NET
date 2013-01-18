@@ -967,5 +967,47 @@ namespace ARDrone.UI
         {
             Process.Start("C:\ffmpeg\ffplay.exe tcp://" + droneControl.droneConfig.StandardOwnIpAddress + ":" + droneControl.droneConfig.VideoPort);
         }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.MAYDAY, 2);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending MAYDAY animation");
+
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            Command LedAnimationCommand = new PlayLedAnimationCommand(ARDrone.Control.Commands.LedAnimation.FIRE, 2, 2);
+
+            droneControl.SendCommand(LedAnimationCommand);
+            UpdateUIAsync("Sending FIRE LED animation");
+
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.FLIP_FRONT, 5);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending frontflip animation");
+        }
+
+        private void button6_Click(object sender, RoutedEventArgs e)
+        {
+            Command LedAnimationCommand = new PlayLedAnimationCommand(ARDrone.Control.Commands.LedAnimation.SNAKE_GREEN_RED, 2, 2);
+
+            droneControl.SendCommand(LedAnimationCommand);
+            UpdateUIAsync("Sending Marquee Blink LED animation");
+        }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.DOUBLE_PHI_THETA_MIXED, 4);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending MAYDAY animation");
+        }
     }
 }

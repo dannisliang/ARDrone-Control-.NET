@@ -178,6 +178,30 @@ namespace ARDroneUI_Detection_Forms
             UpdateUIAsync("Sending flat trim");
         }
 
+        private void DroneAnimation()
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.YAW_DANCE,2);
+
+            //if (!droneControl.IsCommandPossible(resetCommand) || !droneControl.IsCommandPossible(flatTrimCommand))
+            //    return;
+
+            //droneControl.SendCommand(resetCommand);
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending YAW_DANCE animation");
+        }
+
+        private void LedAnimation()
+        {
+            Command LedAnimationCommand = new PlayLedAnimationCommand(ARDrone.Control.Commands.LedAnimation.MarqueeBlink, 2 , 2);
+
+            //if (!droneControl.IsCommandPossible(resetCommand) || !droneControl.IsCommandPossible(flatTrimCommand))
+            //    return;
+
+            //droneControl.SendCommand(resetCommand);
+            droneControl.SendCommand(LedAnimationCommand);
+            UpdateUIAsync("Sending Marquee Blink LED animation");
+        }
+
         private void EnterHoverMode()
         {
             Command enterHoverModeCommand = new HoverModeCommand(DroneHoverMode.Hover);
