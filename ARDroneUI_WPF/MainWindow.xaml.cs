@@ -84,6 +84,54 @@ namespace ARDrone.UI
                 this.Close();
             }
 
+            //Fill in the drone animation dropdown box
+            DroneAnimationComboBox.Items.Clear();
+            DroneAnimationComboBox.Items.Add("Frontflip");
+            DroneAnimationComboBox.Items.Add("Backflip");
+            DroneAnimationComboBox.Items.Add("Leftflip");
+            DroneAnimationComboBox.Items.Add("Rightflip");
+
+            DroneAnimationComboBox.Items.Add("Phi M30 Deg");
+            DroneAnimationComboBox.Items.Add("Phi 30 Deg");
+            
+            DroneAnimationComboBox.Items.Add("Theta M30 Deg");
+            DroneAnimationComboBox.Items.Add("Theta 30 Deg");
+
+            DroneAnimationComboBox.Items.Add("Theta 20 Deg Yaw 200 Deg");
+
+            DroneAnimationComboBox.Items.Add("Theta 20 Deg Yaw M200 Deg");
+
+            DroneAnimationComboBox.Items.Add("Turnaround");
+            DroneAnimationComboBox.Items.Add("Turnaround Go Down");
+
+            DroneAnimationComboBox.Items.Add("Yaw Dance");
+            DroneAnimationComboBox.Items.Add("Phi Dance");
+            DroneAnimationComboBox.Items.Add("Theta Dance");
+            DroneAnimationComboBox.Items.Add("VZ Dance");
+
+            DroneAnimationComboBox.Items.Add("Wave");
+
+            DroneAnimationComboBox.Items.Add("Phi Theta Mixed");
+            DroneAnimationComboBox.Items.Add("Double Phi Theta Mixed");
+
+            DroneAnimationComboBox.Items.Add("MAYDAY");
+
+            //Fill in the Led Animation Box
+            LedAnimationComboBox.Items.Clear();
+            LedAnimationComboBox.Items.Add("Blink green/red");
+            LedAnimationComboBox.Items.Add("Blink Green");
+            LedAnimationComboBox.Items.Add("Blink Red");
+            LedAnimationComboBox.Items.Add("Blink Orange");
+            LedAnimationComboBox.Items.Add("Snake Green/red");
+            LedAnimationComboBox.Items.Add("Fire / shoot");
+            LedAnimationComboBox.Items.Add("Standard");
+            LedAnimationComboBox.Items.Add("Red");
+            LedAnimationComboBox.Items.Add("Green");
+            LedAnimationComboBox.Items.Add("Red Snake");
+            LedAnimationComboBox.Items.Add("Blank");
+            LedAnimationComboBox.Items.Add("Left Green Right Red");
+            LedAnimationComboBox.Items.Add("Left Red Right Green");
+            LedAnimationComboBox.Items.Add("Standard blink");
         }
 
         public void Dispose()
@@ -970,25 +1018,22 @@ namespace ARDrone.UI
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.MAYDAY, 2);
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.VZ_DANCE, 4000);
 
             droneControl.SendCommand(DroneAnimationCommand);
-            UpdateUIAsync("Sending MAYDAY animation");
+            UpdateUIAsync("Sending Dance animation");
 
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            Command LedAnimationCommand = new PlayLedAnimationCommand(ARDrone.Control.Commands.LedAnimation.FIRE, 2, 2);
-
-            droneControl.SendCommand(LedAnimationCommand);
-            UpdateUIAsync("Sending FIRE LED animation");
+            
 
         }
 
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.FLIP_FRONT, 5);
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.FLIP_FRONT, 40);
 
             droneControl.SendCommand(DroneAnimationCommand);
             UpdateUIAsync("Sending frontflip animation");
@@ -996,18 +1041,98 @@ namespace ARDrone.UI
 
         private void button6_Click(object sender, RoutedEventArgs e)
         {
-            Command LedAnimationCommand = new PlayLedAnimationCommand(ARDrone.Control.Commands.LedAnimation.SNAKE_GREEN_RED, 2, 2);
 
-            droneControl.SendCommand(LedAnimationCommand);
-            UpdateUIAsync("Sending Marquee Blink LED animation");
+            DroneAnimation animation = ARDrone.Control.Commands.DroneAnimation.WAVE; 
+            int miliseconds = Convert.ToInt16(animationDurationBox.Text.ToString()) * 1000;
+
+            switch (DroneAnimationComboBox.SelectedIndex)
+            {
+                case 0: animation = ARDrone.Control.Commands.DroneAnimation.FLIP_FRONT; break;
+                case 1: animation = ARDrone.Control.Commands.DroneAnimation.FLIP_BACK; break;
+                case 2: animation = ARDrone.Control.Commands.DroneAnimation.FLIP_LEFT; break;
+                case 3: animation = ARDrone.Control.Commands.DroneAnimation.FLIP_RIGHT; break;
+                case 4: animation = ARDrone.Control.Commands.DroneAnimation.PHI_M30_DEG; break;
+                case 5: animation = ARDrone.Control.Commands.DroneAnimation.PHI_30_DEG; break;
+                case 6: animation = ARDrone.Control.Commands.DroneAnimation.THETA_M30_DEG; break;
+                case 7: animation = ARDrone.Control.Commands.DroneAnimation.THETA_30_DEG; break;
+                case 8: animation = ARDrone.Control.Commands.DroneAnimation.THETA_20DEG_YAW_200DEG; break;
+                case 9: animation = ARDrone.Control.Commands.DroneAnimation.THETA_20DEG_YAW_M200DEG; break;
+                case 10: animation = ARDrone.Control.Commands.DroneAnimation.TURNAROUND; break;
+                case 11: animation = ARDrone.Control.Commands.DroneAnimation.TURNAROUND_GODOWN; break;
+                case 12: animation = ARDrone.Control.Commands.DroneAnimation.YAW_DANCE; break;
+                case 13: animation = ARDrone.Control.Commands.DroneAnimation.PHI_DANCE; break;
+                case 14: animation = ARDrone.Control.Commands.DroneAnimation.THETA_DANCE; break;
+                case 15: animation = ARDrone.Control.Commands.DroneAnimation.VZ_DANCE; break;
+                case 16: animation = ARDrone.Control.Commands.DroneAnimation.WAVE; break;
+                case 17: animation = ARDrone.Control.Commands.DroneAnimation.PHI_THETA_MIXED; break;
+                case 18: animation = ARDrone.Control.Commands.DroneAnimation.DOUBLE_PHI_THETA_MIXED; break;
+                case 19: animation = ARDrone.Control.Commands.DroneAnimation.MAYDAY; break;
+            }
+
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(animation, miliseconds);
+
+            droneControl.SendCommand(DroneAnimationCommand);
         }
+
+
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.DOUBLE_PHI_THETA_MIXED, 4);
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.WAVE, 4000);
 
             droneControl.SendCommand(DroneAnimationCommand);
             UpdateUIAsync("Sending MAYDAY animation");
         }
+
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.YAW_DANCE, 4000);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending MAYDAY animation");
+        }
+
+        private void button8_Click(object sender, RoutedEventArgs e)
+        {
+            Command DroneAnimationCommand = new PlayDroneAnimationCommand(ARDrone.Control.Commands.DroneAnimation.FLIP_LEFT, 40);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+            UpdateUIAsync("Sending MAYDAY animation");
+        }
+
+        private void button9_Click(object sender, RoutedEventArgs e)
+        {
+            LedAnimation animation = ARDrone.Control.Commands.LedAnimation.BLANK;
+            int miliseconds = Convert.ToInt16(LedDuration.Text.ToString());
+            int frequency = Convert.ToInt16(LedFrequency.Text.ToString());
+
+            switch (LedAnimationComboBox.SelectedIndex)
+            {
+                case 0: animation = ARDrone.Control.Commands.LedAnimation.BLINK_GREEN_RED; break;
+                case 1: animation = ARDrone.Control.Commands.LedAnimation.BLINK_GREEN; break;
+                case 2: animation = ARDrone.Control.Commands.LedAnimation.BLINK_RED; break;
+                case 3: animation = ARDrone.Control.Commands.LedAnimation.BLINK_ORANGE; break;
+                case 4: animation = ARDrone.Control.Commands.LedAnimation.SNAKE_GREEN_RED; break;
+                case 5: animation = ARDrone.Control.Commands.LedAnimation.FIRE; break;
+                case 6: animation = ARDrone.Control.Commands.LedAnimation.STANDARD; break;
+                case 7: animation = ARDrone.Control.Commands.LedAnimation.RED; break;
+                case 8: animation = ARDrone.Control.Commands.LedAnimation.GREEN; break;
+                case 9: animation = ARDrone.Control.Commands.LedAnimation.RED_SNAKE; break;
+                case 10: animation = ARDrone.Control.Commands.LedAnimation.BLANK; break;
+                case 11: animation = ARDrone.Control.Commands.LedAnimation.LEFT_GREEN_RIGHT_RED; break;
+                case 12: animation = ARDrone.Control.Commands.LedAnimation.LEFT_RED_RIGHT_GREEN; break;
+                case 13: animation = ARDrone.Control.Commands.LedAnimation.BLINK_STANDARD; break;
+            }
+
+            Command DroneAnimationCommand = new PlayLedAnimationCommand(animation, frequency, miliseconds);
+
+            droneControl.SendCommand(DroneAnimationCommand);
+        }
+
     }
 }

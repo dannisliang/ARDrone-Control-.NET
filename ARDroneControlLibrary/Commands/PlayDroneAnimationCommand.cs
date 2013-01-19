@@ -30,7 +30,7 @@ namespace ARDrone.Control.Commands
         YAW_SHAKE,
         YAW_DANCE,
         PHI_DANCE,
-        THERA_DANCE,
+        THETA_DANCE,
         VZ_DANCE,
         WAVE,
         PHI_THETA_MIXED,
