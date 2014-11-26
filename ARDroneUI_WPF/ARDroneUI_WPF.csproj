@@ -197,6 +197,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ffplay.exe" />
+    <Content Include="liblsl32.dll" />
+    <Content Include="liblsl64.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
